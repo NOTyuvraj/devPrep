@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Problems from "./pages/Problems";
+import OAuthSuccess from "./pages/OAuthSuccess";
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -13,8 +14,23 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/problems" element={<PrivateRoute><Problems /></PrivateRoute>} />
+        <Route path="/oauth-success" element={<OAuthSuccess />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/problems"
+          element={
+            <PrivateRoute>
+              <Problems />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
