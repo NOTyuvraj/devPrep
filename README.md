@@ -1,16 +1,75 @@
-# React + Vite
+# DevPrep Frontend 🧠
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend for DevPrep — an AI-powered interview preparation platform with adaptive revision scheduling, AI insights, and Chrome extension integration.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- 🔐 JWT Authentication
+- 🔑 Google OAuth Login
+- 📊 Revision Dashboard
+- 📚 Problem Tracking UI
+- 🧠 AI-generated Insights
+- 📧 Daily Revision System
+- 📈 Confidence-based Progress Tracking
+- ⚡ Responsive UI
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js
+- Vite
+- Axios
+- React Router
+- CSS
+
+---
+
+## ▶️ Installation
+
+```bash
+git clone https://github.com/NOTyuvraj/devprep-frontend.git
+
+cd devprep-frontend
+
+npm install
+
+npm run dev
+```
+
+---
+
+## 🌐 Backend Connection
+
+The frontend communicates with the DevPrep backend APIs for:
+- authentication
+- problem tracking
+- AI insights
+- revision scheduling
+
+---
+
+## 🔑 Authentication
+
+Supports:
+- Email/password login
+- Google OAuth
+- JWT token-based sessions
+
+---
+
+## 📌 Future Improvements
+
+- Better analytics dashboard
+- Dark/light theme
+- Mobile optimization
+- Interview heatmaps
+- AI-generated revision roadmaps
+
+---
+
+## 👨‍💻 Author
+
+Built by Yuvraj Chaudhary
