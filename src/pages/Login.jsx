@@ -1,33 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import api from "../services/api";
-
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [isSignup, setIsSignup] = useState(false);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const submit = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const endpoint = isSignup ? "/auth/signup" : "/auth/login";
-      const body = isSignup ? { name, email, password } : { email, password };
-      const { data } = await api.post(endpoint, body);
-      localStorage.setItem("token", data.token);
-      navigate("/");
-    } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong");
-    }
-    setLoading(false);
-  };
-
   const s = {
     page: {
       minHeight: "100vh",
@@ -39,63 +12,31 @@ export default function Login() {
     card: {
       background: "#1e293b",
       borderRadius: "12px",
-      padding: "32px",
+      padding: "40px 32px",
       width: "360px",
       border: "1px solid #334155",
+      textAlign: "center",
     },
     title: {
       color: "#e2e8f0",
-      fontSize: "24px",
+      fontSize: "26px",
       fontWeight: "bold",
       marginBottom: "8px",
     },
-    sub: { color: "#94a3b8", fontSize: "14px", marginBottom: "24px" },
-    label: {
+    sub: {
       color: "#94a3b8",
-      fontSize: "13px",
-      marginBottom: "6px",
-      display: "block",
-    },
-    input: {
-      width: "100%",
-      padding: "10px 12px",
-      background: "#0f172a",
-      border: "1px solid #334155",
-      borderRadius: "8px",
-      color: "#e2e8f0",
       fontSize: "14px",
-      marginBottom: "16px",
-      boxSizing: "border-box",
+      marginBottom: "8px",
     },
-    btn: {
-      width: "100%",
-      padding: "12px",
-      background: "#4f46e5",
-      color: "white",
-      border: "none",
-      borderRadius: "8px",
-      fontSize: "15px",
-      fontWeight: "600",
-      cursor: "pointer",
-      marginBottom: "16px",
-    },
-    toggle: {
-      color: "#6366f1",
-      textAlign: "center",
+    tagline: {
+      color: "#64748b",
       fontSize: "13px",
-      cursor: "pointer",
-    },
-    error: {
-      background: "#450a0a",
-      color: "#fca5a5",
-      padding: "10px",
-      borderRadius: "8px",
-      fontSize: "13px",
-      marginBottom: "16px",
+      marginBottom: "32px",
+      lineHeight: "1.5",
     },
     googleBtn: {
       width: "100%",
-      padding: "12px",
+      padding: "13px",
       background: "#ffffff",
       color: "#111827",
       border: "none",
@@ -103,13 +44,15 @@ export default function Login() {
       fontSize: "15px",
       fontWeight: "600",
       cursor: "pointer",
-      marginBottom: "16px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "10px",
     },
-    divider: {
-      textAlign: "center",
-      color: "#64748b",
-      marginBottom: "16px",
-      fontSize: "13px",
+    hint: {
+      color: "#475569",
+      fontSize: "12px",
+      marginTop: "20px",
     },
   };
 
@@ -117,54 +60,25 @@ export default function Login() {
     <div style={s.page}>
       <div style={s.card}>
         <div style={s.title}>DevPrep 🧠</div>
-        <div style={s.sub}>
-          {isSignup ? "Create your account" : "Welcome back"}
-        </div>
-        {error && <div style={s.error}>{error}</div>}
-        {isSignup && (
-          <>
-            <label style={s.label}>Name</label>
-            <input
-              style={s.input}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name"
-            />
-          </>
-        )}
-        <label style={s.label}>Email</label>
-        <input
-          style={s.input}
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@example.com"
-        />
-        <label style={s.label}>Password</label>
-        <input
-          style={s.input}
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="••••••••"
-        />
-        <button style={s.btn} onClick={submit} disabled={loading}>
-          {loading ? "Please wait..." : isSignup ? "Sign Up" : "Login"}
-        </button>
-        <div style={s.divider}>OR</div>
+        <div style={s.sub}>Track your DSA prep.</div>
+        <div style={s.tagline}>Nail your next interview.</div>
+
         <button
           style={s.googleBtn}
           onClick={() => {
             window.location.href = `${API_URL}/api/auth/google`;
           }}
         >
+          <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
+            <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/>
+            <path d="M3.964 10.707A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.039l3.007-2.332z" fill="#FBBC05"/>
+            <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.961L3.964 6.293C4.672 4.166 6.656 3.58 9 3.58z" fill="#EA4335"/>
+          </svg>
           Continue with Google
         </button>
-        <div style={s.toggle} onClick={() => setIsSignup(!isSignup)}>
-          {isSignup
-            ? "Already have an account? Login"
-            : "Don't have an account? Sign up"}
-        </div>
+
+        <div style={s.hint}>No password needed. Just your Google account.</div>
       </div>
     </div>
   );

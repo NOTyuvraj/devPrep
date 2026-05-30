@@ -109,17 +109,6 @@ export default function Dashboard() {
             : <p style={{ color: "#64748b", fontSize: "13px" }}>Click "Get Insights" to analyze your weak areas.</p>}
         </div>
 
-        {/* Extension Token */}
-        <div style={s.tokenCard}>
-          <div>
-            <div style={{ fontSize: "14px", fontWeight: "600", marginBottom: "4px" }}>Chrome Extension</div>
-            <div style={{ fontSize: "12px", color: "#64748b" }}>Copy your token and paste it into the extension to sync problems.</div>
-          </div>
-          <button style={s.tokenBtn} onClick={copyToken}>
-            {copied ? "✓ Copied!" : "Copy Token"}
-          </button>
-        </div>
-
       </div>
     </div>
   );
