@@ -8,7 +8,6 @@ export default function Dashboard() {
   const [insights, setInsights] = useState("");
   const [loadingInsights, setLoadingInsights] = useState(false);
   const [due, setDue] = useState([]);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     api.get("/problems/stats").then(r => setStats(r.data));
@@ -20,14 +19,6 @@ export default function Dashboard() {
     const { data } = await api.get("/ai/insights");
     setInsights(data.insights);
     setLoadingInsights(false);
-  };
-
-  const copyToken = () => {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-    navigator.clipboard.writeText(token);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   const s = {
@@ -42,9 +33,7 @@ export default function Dashboard() {
     insightBox: { background: "#1e293b", borderRadius: "12px", padding: "20px", border: "1px solid #334155", marginTop: "16px", lineHeight: "1.7", fontSize: "14px", color: "#cbd5e1" },
     dueItem: { background: "#1e293b", borderRadius: "8px", padding: "12px 16px", marginBottom: "8px", border: "1px solid #334155", display: "flex", justifyContent: "space-between", alignItems: "center" },
     badge: (d) => ({ padding: "2px 8px", borderRadius: "12px", fontSize: "11px", fontWeight: "500", background: d === "Easy" ? "#064e3b" : d === "Medium" ? "#451a03" : "#450a0a", color: d === "Easy" ? "#6ee7b7" : d === "Medium" ? "#fcd34d" : "#fca5a5" }),
-    tokenCard: { background: "#1e293b", borderRadius: "12px", padding: "20px", border: "1px solid #334155", marginTop: "24px", display: "flex", justifyContent: "space-between", alignItems: "center" },
-    tokenBtn: { padding: "8px 16px", background: copied ? "#064e3b" : "#334155", color: copied ? "#6ee7b7" : "#e2e8f0", border: "none", borderRadius: "8px", cursor: "pointer", fontSize: "13px", fontWeight: "600", transition: "all 0.2s", whiteSpace: "nowrap" },
-  };
+    };
 
   const COLORS = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#6366f1"];
 
