@@ -72,24 +72,7 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
-            <a
-              href="https://chrome.google.com/webstore"
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                marginLeft: "auto",
-                padding: "6px 14px",
-                background: "#4f46e5",
-                color: "white",
-                borderRadius: "6px",
-                fontSize: "12px",
-                fontWeight: "600",
-                textDecoration: "none",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Install Extension →
-            </a>
+            
           </div>
         </div>
       )}
